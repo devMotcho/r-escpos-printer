@@ -4,6 +4,7 @@ This project uses python escpos to print orders to a 80mm termal printer connect
 ## Functionality
 - Logging to a file different types of errors (`ERROR`, `WARNING`, `INFO`)
 - Printer service allows to connect to your printer via Network and checks the connection status.
+- Format escpos document based on the models
 
 
 ## Dependencies

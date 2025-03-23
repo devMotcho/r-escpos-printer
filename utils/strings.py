@@ -38,7 +38,6 @@ def wrapper(s: str) -> str:
     s += "\n"
     return s
 
-
 def calculated_space_between(left: str, right: str) -> str:
     """
     Creates a single line by aligning two strings with calculated spacing between them.

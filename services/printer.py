@@ -5,7 +5,7 @@ from models.order import Order
 from models.logger import Logger
 from models.customer import Customer
 from models.log_level import LogLevel
-from app.settings import MAX_ATTEMPTS, PRINTER_IP
+from app.settings import MAX_ATTEMPTS, PRINTER_IP, RETRY_DELAY
 from utils.strings import wrapper, calculated_space_between
 
 def connect_printer(logger: Logger) -> tuple:
@@ -41,9 +41,10 @@ def connect_printer(logger: Logger) -> tuple:
         
         except Exception as e:
             logger.log(LogLevel.ERROR, f"Erro ao conectar com a impressora após {attempt+1} tentativas. {str(e)}")
-        time.sleep(2)
+        time.sleep(RETRY_DELAY)
     return (False, None)
-            
+
+
 def print_order(order : Order, customer: Customer, printer : Network.Printer, logger : Logger) -> bool:
     """
     Prints an order receipt to an 80mm printer with formatted customer and order details.
