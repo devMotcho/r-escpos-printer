@@ -21,5 +21,8 @@ class OrderProduct(BaseModel):
     price: float
     note: str
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.product.product_name}, {self.product.product_accompaniment}, {self.points}, {self.price}'
+    
+    def price_str(self) -> str:
+        return f'{self.points} pontos' if self.purchased_with_points else f'{self.price} EUR'

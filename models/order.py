@@ -39,3 +39,9 @@ class Order(BaseModel):
         if not getattr(self, 'full_address', '').strip():
             return "Recolha no Restaurante"
         return "Entrega ao Domicilio"
+    
+    def formated_date(self) -> str:
+        return f"{self.delivery_time.strftime('%d-%m-%Y')}"
+    
+    def formated_time(self) -> str:
+        return f"{self.delivery_time.strftime('%H:%M:%S')}"
