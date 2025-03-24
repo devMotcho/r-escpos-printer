@@ -75,19 +75,24 @@ class OrderDto(BaseModel):
                 - Customer: The instantiated Customer object with populated attributes.
                 - Order: The instantiated Order object with the associated Customer and populated attributes.
         """
-        customer = Customer()
-        customer.name = self.customer_name
-        customer.email = self.email
-        customer.nif = self.nif
-        customer.full_address = self.full_address
-        customer.phone_number = self.phone_number
+        customer = Customer(
+            name=self.customer_name,
+            email=self.email,
+            nif=self.nif,
+            full_address=self.full_address,
+            phone_number=self.phone_number
 
-        order = Order()
-        order.id = self.id
-        order.customer = customer
-        order.created = self.created
-        order.order_products = self.order_products
-        order.total_price = self.total_price
-        order.printed = self.printed
+        )
+
+        order = Order(
+            id=self.id,
+            customer=customer,
+            created=self.created,
+            order_products=self.order_products,
+            total_price=self.total_price,
+            printed=self.printed,
+            delivery_time=self.delivery_time
+
+        )
 
         return (customer, order)
