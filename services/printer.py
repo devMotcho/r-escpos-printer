@@ -98,6 +98,7 @@ def print_order(order_dto : OrderDto, printer : Network, logger : Logger) -> boo
         # Print Order most critical data info
         printer.set(align="center", bold=True)
         printer.text(wrapper(data["title"]))
+        printer.set(align="left", bold=False)
         printer.text(wrapper(data["order_type"]))
         printer.text(wrapper(data["delivery_date"]))
         printer.text(wrapper(data["delivery_time"]))
