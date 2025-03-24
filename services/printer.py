@@ -1,7 +1,7 @@
 import time
 from escpos.printer import Network
 
-from models.order import Order
+from models.order import Order, OrderDto
 from models.logger import Logger
 from models.customer import Customer
 from models.log_level import LogLevel
@@ -45,7 +45,7 @@ def connect_printer(logger: Logger) -> tuple:
     return (False, None)
 
 
-def print_order(order : Order, customer: Customer, printer : Network.Printer, logger : Logger) -> bool:
+def print_order(order_dto : OrderDto, printer : Network, logger : Logger) -> bool:
     """
     Prints an order receipt to an 80mm printer with formatted customer and order details.
 
@@ -70,11 +70,12 @@ def print_order(order : Order, customer: Customer, printer : Network.Printer, lo
               is not properly connected.
     """
 
-    if not printer or not hasattr(printer, 'set'):
+    if not printer:
         logger.log(LogLevel.ERROR, f"Sem impressora conectada.")
         return False
     
     try:
+        customer, order = order_dto.manipulate_orderDto()
         # A dictionary with formatted order and customer details.
         data = {
             "title" : f"Pedido n.{str(order.id)} Rodízio Ementa Digital",
@@ -120,9 +121,9 @@ def print_order(order : Order, customer: Customer, printer : Network.Printer, lo
 
         # Iterate through each ordered product and print its details.
         for instance in order.order_products:
-
-            printer.text(wrapper(instance.product_name))
-            printer.text(wrapper(instance.product_accompaniment))
+            
+            printer.text(wrapper(instance.product.product_name))
+            printer.text(wrapper(instance.product.product_accompaniment))
 
             # Format a line that shows the quantity and price with appropriate spacing.
             quantity_price_line = calculated_space_between(f'{instance.quantity} x', instance.price_str())

@@ -10,7 +10,7 @@ LINE_WIDTH = 48 # 80mm line width
 LOG_FILE = "log.txt"
 
 BASE_URL = os.getenv("BASE_URL")
-PRINTER_IP = os.getenv("PRINTER_ID")
+PRINTER_IP = os.getenv("PRINTER_IP")
 PRINTER_PORT = os.getenv("PRINTER_PORT")
 
 AUTH_URL = f'{BASE_URL}auth/'

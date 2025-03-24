@@ -1,7 +1,7 @@
 from typing import List
 from datetime import datetime
 from pydantic import BaseModel
-from models.order_product import OrderProduct
+from models.order_product import OrderProduct, OrderProductDto
 from models.customer import Customer
 
 class Order(BaseModel):
@@ -57,7 +57,7 @@ class OrderDto(BaseModel):
     phone_number: str
     delivery_time: datetime
     created: datetime
-    order_products: List[OrderProduct]
+    order_products: List[OrderProductDto]
     total_price: float
     printed: bool
 
@@ -83,12 +83,15 @@ class OrderDto(BaseModel):
             phone_number=self.phone_number
 
         )
+        order_products = []
+        for op in self.order_products:
+            order_products.append(op.manipulate_order_product_dto())
 
         order = Order(
             id=self.id,
             customer=customer,
             created=self.created,
-            order_products=self.order_products,
+            order_products=order_products,
             total_price=self.total_price,
             printed=self.printed,
             delivery_time=self.delivery_time

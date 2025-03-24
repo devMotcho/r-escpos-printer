@@ -4,7 +4,7 @@ from datetime import datetime
 
 from models.order import OrderDto, Order
 from models.product import Product
-from models.order_product import OrderProduct
+from models.order_product import OrderProduct, OrderProductDto
 from app.settings import ORDERS_URL, UPDATE_ORDER_URL
 
 def fetch_orders(access_token : str) -> List[OrderDto]:
@@ -79,10 +79,24 @@ def update_order_status(order : Order, access_token : str) -> bool:
 
 
 def dummy_fetch_orders() -> List[OrderDto]:
+    """
+    Generates and returns a list of dummy OrderDto instances for testing purposes.
+
+    This function creates a dummy order product DTO and a dummy order DTO with preset values.
+    The dummy order product represents a test product with sample attributes, and the dummy order
+    aggregates this product into a complete order along with customer details and order metadata.
+    The function then appends the dummy order DTO to a list and returns it, simulating the fetching
+    of orders from a data source.
+
+    Returns:
+        List[OrderDto]: A list containing a single dummy OrderDto instance.
+    """
     orders = []
 
-    dummy_order_product = OrderProduct(
-        product=Product(category="Testing", product_name="Test Product", product_accompaniment=""),
+    dummy_order_product_dto = OrderProductDto(
+        category="Testing",
+        product_name="Test Product",
+        product_accompaniment="",
         purchased_with_points=False,
         quantity=1,
         points=0,
@@ -99,7 +113,7 @@ def dummy_fetch_orders() -> List[OrderDto]:
         phone_number="555-1234",
         delivery_time=datetime.now(),
         created=datetime.now(),
-        order_products=[dummy_order_product],
+        order_products=[dummy_order_product_dto],
         total_price=10.0,
         printed=False
     )
