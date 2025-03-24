@@ -35,4 +35,5 @@ For details on connecting via other methods, please refer to the [python-escpos 
 ## Auth Service
 The function `get_auth_tokens` demonstrates how the project handles API authentication, including error handling, retries, and token extraction.
 
-*Note: In the future I pretend to add more Authentication functionality, but for now is all that the project needs.*
+*Note: I pretend to add more Authentication functionality.*
+

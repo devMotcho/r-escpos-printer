@@ -16,3 +16,6 @@ PRINTER_PORT = os.getenv("PRINTER_PORT")
 AUTH_URL = f'{BASE_URL}auth/'
 USERNAME = os.getenv("USERNAME")
 PASSWORD = os.getenv("PASSWORD")
+
+ORDERS_URL = f'{BASE_URL}order/print-orders/'
+UPDATE_ORDER_URL = f'{BASE_URL}order/print-orders-status/' # add order.id
