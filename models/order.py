@@ -1,4 +1,3 @@
-from typing import List
 from datetime import datetime
 from pydantic import BaseModel
 from models.order_product import OrderProduct, OrderProductDto
@@ -13,7 +12,7 @@ class Order(BaseModel):
         customer(Customer): Customer that made the order.
         delivery_time (datetime): Scheduled delivery or pickup time.
         created (datetime): Timestamp when the order was created.
-        order_products (List[OrderProduct]): List of ordered products with detailed information.
+        order_products (list[OrderProduct]): list of ordered products with detailed information.
         total_price (float): Total cost of the order.
         printed (bool): Flag to indicate if the order has been printed.
     """
@@ -21,7 +20,7 @@ class Order(BaseModel):
     customer : Customer
     delivery_time: datetime
     created: datetime
-    order_products: List[OrderProduct]
+    order_products: list[OrderProduct]
     total_price: float
     printed: bool
                     
@@ -57,7 +56,7 @@ class OrderDto(BaseModel):
     phone_number: str
     delivery_time: datetime
     created: datetime
-    order_products: List[OrderProductDto]
+    order_products: list[OrderProductDto]
     total_price: float
     printed: bool
 
@@ -76,7 +75,7 @@ class OrderDto(BaseModel):
                 - Order: The instantiated Order object with the associated Customer and populated attributes.
         """
         customer = Customer(
-            name=self.customer,
+            name=self.customer_name,
             email=self.email,
             nif=self.nif,
             full_address=self.full_address,

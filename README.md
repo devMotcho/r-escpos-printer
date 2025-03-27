@@ -7,6 +7,8 @@ This repo is a Python project that leverages the python-escpos library to print 
 - **Document Formatting:** Formats ESC/POS documents based on clearly defined models.
 - **API Authentication:** Authenticates with a provided API to obtain necessary tokens.
 - **Fetching & Updating Orders:** Get and update orders from the backend server.
+- **A script Controller:** It coordinates printer operations, server communication, and order fulfillment with robust error handling and retry mechanisms.
+- **Tray Icon Menu:** Allows users to controle the script in a simple way using the pystray library.
 
 
 
@@ -16,7 +18,7 @@ This repo is a Python project that leverages the python-escpos library to print 
 - [pydantic](https://docs.pydantic.dev/latest/)
 - [python-escpos](https://python-escpos.readthedocs.io/en/latest/user/installation.html)
 - [requests](https://pypi.org/project/requests/)
-
+- [pystray](https://pypi.org/project/pystray/)
 
 
 ## Models
@@ -55,3 +57,6 @@ The order service handles the API requests that need to be made to the server in
 - Thread-safe design using locks
 - Resource cleanup on shutdown
 
+## Tray Icon Menu
+Is a system tray icon controller for print automation script present on the `main.py` file.
+Provides visual status monitoring and basic controls through system tray interface.

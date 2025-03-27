@@ -2,3 +2,11 @@
 Created: 2025-03-23 11:39:34
 ====================================
 
+[ERROR] [2025-03-27 17:24:47] Problema com autenticação no servidor.
+[ERROR] [2025-03-27 17:25:11] Problema com autenticação no servidor.
+[ERROR] [2025-03-27 17:25:27] Problema com autenticação no servidor.
+[ERROR] [2025-03-27 17:25:45] Problema com autenticação no servidor.
+[ERROR] [2025-03-27 17:26:01] Problema com autenticação no servidor.
+[ERROR] [2025-03-27 17:26:31] Problema com autenticação no servidor.
+[ERROR] [2025-03-27 17:27:39] Problema com autenticação no servidor.
+[ERROR] [2025-03-27 17:28:02] Verificação com internet falhou
