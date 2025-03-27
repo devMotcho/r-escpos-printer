@@ -50,7 +50,7 @@ class OrderDto(BaseModel):
     structure of the domain models.
     """
     id: int
-    customer_name : str
+    customer : str
     email: str
     nif: int
     full_address: str
@@ -76,7 +76,7 @@ class OrderDto(BaseModel):
                 - Order: The instantiated Order object with the associated Customer and populated attributes.
         """
         customer = Customer(
-            name=self.customer_name,
+            name=self.customer,
             email=self.email,
             nif=self.nif,
             full_address=self.full_address,

@@ -47,5 +47,11 @@ The order service handles the API requests that need to be made to the server in
 - Update the status of a order to `printed`
 - Dummy order, to test without making the orders fetch called `dummy_fetch_orders`
 
-
+## Script Controller
+`ScriptController` is the core class managing an automated order processing system. It coordinates printer operations, server communication, and order fulfillment with robust error handling and retry mechanisms.
+- Start/stop control via `start_script()`/`stop_script()`
+- Real-time status through status_message property
+- Requires proper error handling in dependent services
+- Thread-safe design using locks
+- Resource cleanup on shutdown
 

@@ -44,6 +44,8 @@ def get_auth_tokens() -> tuple:
                 timeout=10
             )
 
+            print(json, AUTH_URL)
+
             if response.status_code == 200:
                 access_token = response.json().get('access')
                 if access_token:

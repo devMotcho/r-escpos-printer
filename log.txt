@@ -2,14 +2,3 @@
 Created: 2025-03-23 11:39:34
 ====================================
 
-[INFO] [2025-03-23 11:39:34] All running!
-[ERROR] [2025-03-24 10:58:36] Erro ao conectar com a impressora após 1 tentativas. str, bytes or bytearray expected, not NoneType
-[ERROR] [2025-03-24 10:58:38] Erro ao conectar com a impressora após 2 tentativas. str, bytes or bytearray expected, not NoneType
-[ERROR] [2025-03-24 10:58:40] Erro ao conectar com a impressora após 3 tentativas. str, bytes or bytearray expected, not NoneType
-[ERROR] [2025-03-24 10:58:42] Sem impressora conectada.
-[ERROR] [2025-03-24 11:02:26] Sem impressora conectada.
-[ERROR] [2025-03-24 11:03:46] Sem impressora conectada.
-[ERROR] [2025-03-24 11:04:10] Sem impressora conectada.
-[ERROR] [2025-03-24 11:05:29] Erro ao imprimir o pedido nº101 : 'tuple' object has no attribute 'set'
-[ERROR] [2025-03-24 11:11:40] Erro ao imprimir o pedido nº101 : 'tuple' object has no attribute 'set'
-[ERROR] [2025-03-24 11:12:31] Erro ao imprimir o pedido nº101 : 'OrderProduct' object has no attribute 'manipulate_order_product_dto'

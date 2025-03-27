@@ -1,9 +1,8 @@
 import time
 from escpos.printer import Network
 
-from models.order import Order, OrderDto
+from models.order import OrderDto
 from models.logger import Logger
-from models.customer import Customer
 from models.log_level import LogLevel
 from app.settings import MAX_ATTEMPTS, PRINTER_IP, RETRY_DELAY
 from utils.strings import wrapper, calculated_space_between
