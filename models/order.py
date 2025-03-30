@@ -75,7 +75,7 @@ class OrderDto(BaseModel):
                 - Order: The instantiated Order object with the associated Customer and populated attributes.
         """
         customer = Customer(
-            name=self.customer_name,
+            name=self.customer,
             email=self.email,
             nif=self.nif,
             full_address=self.full_address,

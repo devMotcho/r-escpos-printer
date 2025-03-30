@@ -1,5 +1,4 @@
 import requests
-from typing import List
 from datetime import datetime
 
 from models.order import OrderDto, Order
@@ -7,7 +6,7 @@ from models.product import Product
 from models.order_product import OrderProduct, OrderProductDto
 from app.settings import ORDERS_URL, UPDATE_ORDER_URL
 
-def fetch_orders(access_token : str) -> List[OrderDto]:
+def fetch_orders(access_token : str) -> list[OrderDto]:
     """
     Retrieves orders from the remote service.
 
@@ -78,7 +77,7 @@ def update_order_status(order : Order, access_token : str) -> bool:
     return True
 
 
-def dummy_fetch_orders() -> List[OrderDto]:
+def dummy_fetch_orders() -> list[OrderDto]:
     """
     Generates and returns a list of dummy OrderDto instances for testing purposes.
 

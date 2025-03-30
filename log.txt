@@ -10,3 +10,42 @@ Created: 2025-03-23 11:39:34
 [ERROR] [2025-03-27 17:26:31] Problema com autenticação no servidor.
 [ERROR] [2025-03-27 17:27:39] Problema com autenticação no servidor.
 [ERROR] [2025-03-27 17:28:02] Verificação com internet falhou
+[ERROR] [2025-03-30 23:44:32] Problema com autenticação no servidor.
+[ERROR] [2025-03-30 23:45:50] Problema com autenticação no servidor.
+[ERROR] [2025-03-30 23:47:07] Problema com autenticação no servidor.
+[ERROR] [2025-03-30 23:47:56] Problema com autenticação no servidor.
+[ERROR] [2025-03-30 23:50:32] Problema com autenticação no servidor.
+[ERROR] [2025-03-30 23:51:46] Problema com autenticação no servidor.
+[ERROR] [2025-03-30 23:56:30] Verificação com o servidor falhou
+[ERROR] [2025-03-30 23:57:37] Verificação com o servidor falhou
+[ERROR] [2025-03-30 23:59:23] Verificação com o servidor falhou
+[ERROR] [2025-03-31 00:00:01] Erro pedidos: Falha ou reunir pedidos : 401 - {"unauthorized":"Não tens direitos para aceder a estes dados."}
+[ERROR] [2025-03-31 00:00:58] Erro pedidos: Falha ou reunir pedidos : 401 - {"unauthorized":"Não tens direitos para aceder a estes dados."}
+[ERROR] [2025-03-31 00:01:38] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:01:38] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:01:38] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:01:38] Falha após 3 tentativas de imprimir o pedido n 1
+[ERROR] [2025-03-31 00:03:09] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:03:09] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:03:09] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:03:09] Falha após 3 tentativas de imprimir o pedido n 1
+[ERROR] [2025-03-31 00:07:38] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:07:38] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:07:38] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:07:38] Falha após 3 tentativas de imprimir o pedido n 1
+[ERROR] [2025-03-31 00:11:50] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:11:50] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:11:50] Erro inesperado ao imprimir o pedido 1 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:11:50] Falha após 3 tentativas de imprimir o pedido n 1
+[ERROR] [2025-03-31 00:13:09] Erro inesperado ao imprimir o pedido 3 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:13:09] Erro inesperado ao imprimir o pedido 3 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:13:09] Erro inesperado ao imprimir o pedido 3 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:13:09] Falha após 3 tentativas de imprimir o pedido n 3
+[ERROR] [2025-03-31 00:16:15] Erro inesperado ao imprimir o pedido 3 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:16:15] Erro inesperado ao imprimir o pedido 3 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:16:15] Erro inesperado ao imprimir o pedido 3 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:16:15] Falha após 3 tentativas de imprimir o pedido n 3
+[ERROR] [2025-03-31 00:20:13] Erro inesperado ao imprimir o pedido 3 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:20:13] Erro inesperado ao imprimir o pedido 3 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:20:13] Erro inesperado ao imprimir o pedido 3 : cannot access local variable 'order' where it is not associated with a value
+[ERROR] [2025-03-31 00:20:13] Falha após 3 tentativas de imprimir o pedido n 3

@@ -21,4 +21,4 @@ ORDERS_URL = f'{BASE_URL}order/print-orders/'
 UPDATE_ORDER_URL = f'{BASE_URL}order/print-orders-status/' # add order.id
 
 CHECK_INTERNET_URL = "https://google.com/"
-CHECK_SERVER_HEALTH = "https://google.com/" # change to a server endpoint that checks health
+CHECK_SERVER_HEALTH = f"{BASE_URL}app/health-check/"

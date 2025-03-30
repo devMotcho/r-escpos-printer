@@ -9,7 +9,7 @@ import threading
 from utils.checks import check_url
 from models.logger import Logger
 from models.log_level import LogLevel
-from models.order import Order
+from models.order import Order, OrderDto
 from app.settings import CHECK_SERVER_HEALTH, CHECK_INTERNET_URL, MAX_ATTEMPTS, RETRY_DELAY
 from services.printer import connect_printer, print_order
 from services.auth import get_auth_tokens
@@ -82,6 +82,7 @@ class ScriptController:
                 try:
                     # orders = dummy_fetch_orders()  # For testing without API
                     orders = fetch_orders(token)
+                    print(orders)
                     if orders and not self.process_orders_with_retry(orders, token):
                         continue
                 except Exception as e:
@@ -114,7 +115,7 @@ class ScriptController:
                 return False
         return True
 
-    def process_orders_with_retry(self, orders: list[Order], token: str) -> bool:
+    def process_orders_with_retry(self, orders: list[OrderDto], token: str) -> bool:
         """
         Process order list with retry logic for both printing and status updates.
         
@@ -139,7 +140,7 @@ class ScriptController:
 
         return True
 
-    def retry_print_operation(self, order: Order) -> bool:
+    def retry_print_operation(self, order: OrderDto) -> bool:
         """
         Attempt order printing with reconnection retries.
         

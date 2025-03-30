@@ -3,6 +3,7 @@ import time
 import pystray
 import threading
 from PIL import Image, ImageDraw
+from app.settings import BASE_URL, CHECK_SERVER_HEALTH
 
 from controllers.script import ScriptController
 
@@ -51,6 +52,7 @@ def setup_icon(icon):
 
 if __name__ == "__main__":
 
+    print(BASE_URL, CHECK_SERVER_HEALTH)
     controller = ScriptController()
 
     # Configure system tray icon
