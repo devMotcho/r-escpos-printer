@@ -32,7 +32,7 @@ def wrapper(s: str) -> str:
             else:
                 new_s += "\n"
                 count = 0
-        
+        new_s += '\n'
         return new_s
     # If the string is within the limit, simply append a newline at the end.
     s += "\n"

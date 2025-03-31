@@ -28,7 +28,7 @@ class Order(BaseModel):
         return f'Pedido n{self.id}, {self.order_products.__str__()}, {self.total_price}'
     
     def order_type(self) -> str:
-        if not getattr(self, 'full_address', '').strip():
+        if self.customer.full_address.strip() == "":
             return "Recolha no Restaurante"
         return "Entrega ao Domicilio"
     
