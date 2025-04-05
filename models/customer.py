@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 
 class Customer(BaseModel):
@@ -16,6 +17,8 @@ class Customer(BaseModel):
     nif: int
     full_address: str
     phone_number: str
+    locality_name : Optional[str] = None
+    indication : Optional[str] = None
 
     def __str__(self):
         return f"{self.name}, {self.email}"

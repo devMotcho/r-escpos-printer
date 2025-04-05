@@ -80,10 +80,11 @@ def print_order(order_dto : OrderDto, printer : Network, logger : Logger) -> boo
             "title" : f"Pedido n.{str(order.id)} Rodízio Ementa Digital",
 
             "order_type" : f"Tipo do Pedido: {order.order_type()}",
-            "delivery_date" : f"Data de Entrega: {order.formated_date()}",
-            "delivery_time" : f"Hora de Entrega: {order.formated_time()}",
+            "delivery_date_time" : f"Data e Hora da Entrega: {order.formated_date()} {order.formated_time()}",
             
             "customer_title" : f"Informações do Cliente",
+            "locality" : f'Localidade de Entrega: {customer.locality_name}',
+            "indication" : f'Ponto de Referência: {customer.indication}',
             "nif" : f"NIF: {customer.nif}",
             "full_address" : f"Morada: {customer.full_address}",
             "customer" : f"Cliente: {customer.name}",
@@ -99,10 +100,11 @@ def print_order(order_dto : OrderDto, printer : Network, logger : Logger) -> boo
         printer.text(wrapper(data["title"]))
         printer.set(align="left", bold=False)
         printer.text(wrapper(data["order_type"]))
-        printer.text(wrapper(data["delivery_date"]))
-        printer.text(wrapper(data["delivery_time"]))
+        printer.text(wrapper(data["delivery_date_time"]))
         printer.text(wrapper(data["nif"]))
+        printer.text(wrapper(data["locality"]))
         printer.text(wrapper(data["full_address"]))
+        printer.text(wrapper(data["indication"]))
         printer.text("\n")
 
         # Print Customer only info
@@ -122,15 +124,15 @@ def print_order(order_dto : OrderDto, printer : Network, logger : Logger) -> boo
         # Iterate through each ordered product and print its details.
         for instance in order.order_products:
             
-            printer.text(wrapper(instance.product.product_name))
-            printer.text(wrapper(instance.product.product_accompaniment))
+            qnt_and_product = f'{instance.quantity}x {instance.product.product_name}'
 
             # Format a line that shows the quantity and price with appropriate spacing.
-            quantity_price_line = calculated_space_between(f'{instance.quantity} x', instance.price_str())
+            quantity_price_line = calculated_space_between(f'{qnt_and_product} x', instance.price_str())
             printer.text(quantity_price_line + '\n')
 
-            printer.text(wrapper(f'Nota do Pedido: {instance.note}'))
-            printer.text("\n")
+            if instance.note:
+                printer.text(wrapper(f'Nota do Pedido: {instance.note}'))
+                printer.text("\n")
         
         printer.text("\n")
         printer.text(data["total"])

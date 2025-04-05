@@ -114,7 +114,9 @@ def dummy_fetch_orders() -> list[OrderDto]:
         created=datetime.now(),
         order_products=[dummy_order_product_dto],
         total_price=10.0,
-        printed=False
+        printed=False,
+        locality_name="Localidade",
+        indication="near Test Tower"
     )
 
     orders.append(dummy_order_dto)

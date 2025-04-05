@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 from pydantic import BaseModel
 from models.order_product import OrderProduct, OrderProductDto
 from models.customer import Customer
@@ -53,6 +54,8 @@ class OrderDto(BaseModel):
     email: str
     nif: int
     full_address: str
+    locality_name : Optional[str] = None
+    indication : Optional[str] = None
     phone_number: str
     delivery_time: datetime
     created: datetime
@@ -79,8 +82,8 @@ class OrderDto(BaseModel):
             email=self.email,
             nif=self.nif,
             full_address=self.full_address,
-            phone_number=self.phone_number
-
+            phone_number=self.phone_number,
+            locality_name=self.locality_name
         )
         order_products = []
         for op in self.order_products:
@@ -94,7 +97,6 @@ class OrderDto(BaseModel):
             total_price=self.total_price,
             printed=self.printed,
             delivery_time=self.delivery_time
-
         )
 
         return (customer, order)
