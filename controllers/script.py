@@ -9,6 +9,7 @@ import threading
 from utils.checks import check_url
 from models.logger import Logger
 from models.log_level import LogLevel
+from models.error_type import ErrorType
 from models.order import Order, OrderDto
 from app.settings import CHECK_SERVER_HEALTH, CHECK_INTERNET_URL, MAX_ATTEMPTS, RETRY_DELAY
 from services.printer import connect_printer, print_order
@@ -28,6 +29,7 @@ class ScriptController:
         self.logger = Logger()            # Logger instance for system logging
         self.lock = threading.Lock()       # Thread synchronization lock
         self.printer = None               # Printer connection reference
+        
 
     def start_script(self):
         """Start the main processing thread if not already running."""
@@ -75,7 +77,7 @@ class ScriptController:
                 # API authentication
                 auth_status, token, auth_error = get_auth_tokens()
                 if not auth_status:
-                    self.error_occurred(f'Falha de autenticação: {auth_error}', auth_error)
+                    self.error_occurred(ErrorType.AUTHENTICATION.value, auth_error)
                     continue  # Will exit if stop_event is set
 
                 # Order processing with retry logic
@@ -86,13 +88,13 @@ class ScriptController:
                     if orders and not self.process_orders_with_retry(orders, token):
                         continue
                 except Exception as e:
-                    self.error_occurred("Erro ao tratar pedidos", f'Erro pedidos: {str(e)}')
+                    self.error_occurred(ErrorType.ORDER_PROCESSING.value, f'Erro pedidos: {str(e)}')
                     continue
 
                 time.sleep(20)  # Normal interval between processing cycles
 
         except Exception as e:
-            self.error_occurred("Falha Inesperada", f"Erro Inesperado: {str(e)}")
+            self.error_occurred(ErrorType.UNEXPECTED.value, f"Erro Inesperado: {str(e)}")
         finally:
             self.cleanup_resources()
 
@@ -105,9 +107,9 @@ class ScriptController:
         """
         checks = [
             # (check_function, error_message, log_message)
-            (lambda: check_url(CHECK_INTERNET_URL), "Sem internet", "Verificação com internet falhou"),
-            (self.check_printer_connection, "Impressora offline", "Conexão com a impressora falhou"),
-            (lambda: check_url(CHECK_SERVER_HEALTH), "Servidor offline", "Verificação com o servidor falhou")
+            (lambda: check_url(CHECK_INTERNET_URL), ErrorType.INTERNET_CONNECTION.value, "Sem conexão à internet."),
+            (self.check_printer_connection, ErrorType.PRINTER_CONNECTION.value, "Sem conexão à impressora"),
+            (lambda: check_url(CHECK_SERVER_HEALTH), ErrorType.SERVER_CONNECTION.value, "Sem conexão com o servidor")
         ]
 
         for check_fn, err_msg, log_msg in checks:
@@ -166,7 +168,7 @@ class ScriptController:
                                f'Erro inesperado ao imprimir o pedido {order.id} : {str(e)}')
 
         # Critical failure after all attempts
-        self.error_occurred(f"Falha na impressão do pedido n {order.id}", 
+        self.error_occurred(ErrorType.ORDER_PROCESSING.value, 
                            f'Falha após {MAX_ATTEMPTS} tentativas de imprimir o pedido n {order.id}')
         return False
 
@@ -187,9 +189,8 @@ class ScriptController:
                     return True
                 time.sleep(RETRY_DELAY)
             except Exception as e:
-                self.logger.log(LogLevel.ERROR, 
-                              f'Erro ao atualizar status de impressão do pedido n {order.id}.', 
-                              f'Atualização de status de impressão do pedido n {order.id} falhou')
+                self.logger.log(LogLevel.ERROR,
+                              f'Atualização de status de impressão do pedido n {order.id} falhou : {str(e)}')
         return False  # Non-critical failure, continues processing other orders
 
     def check_printer_connection(self) -> bool:

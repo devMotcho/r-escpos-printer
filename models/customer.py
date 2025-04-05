@@ -11,6 +11,8 @@ class Customer(BaseModel):
         nif (int): The tax identification number (PT).
         full_address (str): The customer's address (if empty, implies pickup).
         phone_number (str): The customer's contact number.
+        locality_name (str): The customer's locality to where to order will be sent.
+        indication (str) : A indication that customer can given for a smoother delivery.
     """
     name: str
     email: str

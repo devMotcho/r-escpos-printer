@@ -20,8 +20,8 @@ def on_restart(icon, item):
 
 def on_status(icon, item):
     """Show current status in notification balloon"""
-    status = "RUNNING" if controller.running else "STOPPED"
-    icon.notify(f"Status: {status}\nMensagem: {controller.status_message}")
+    status = "ON" if controller.running else "OFF"
+    icon.notify(f"{status}\nMensagem: {controller.status_message}")
 
 def create_image(color):
     """Generate tray icon image with colored square

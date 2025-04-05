@@ -16,3 +16,5 @@ Created: 2025-03-23 11:39:34
 [ERROR] [2025-04-01 15:13:09] Erro ao conectar com a impressora após 3 tentativas. Device not found (Could not open socket for 192.168.123.100:
 [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
 [ERROR] [2025-04-01 15:13:11] Conexão com a impressora falhou
+[ERROR] [2025-04-05 19:23:20] Sem conexão à internet.
+[ERROR] [2025-04-05 19:24:33] Sem conexão à internet.
