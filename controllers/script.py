@@ -5,6 +5,7 @@ Handles system checks, printer management, order processing, and error handling 
 
 import time
 import threading
+import winsound
 
 from utils.checks import check_url
 from models.logger import Logger
@@ -29,6 +30,10 @@ class ScriptController:
         self.logger = Logger()            # Logger instance for system logging
         self.lock = threading.Lock()       # Thread synchronization lock
         self.printer = None               # Printer connection reference
+
+        # Sound alert control
+        self.sound_stop_event = threading.Event()
+        self.sound_thread = None
         
 
     def start_script(self):
@@ -51,6 +56,36 @@ class ScriptController:
                     except RuntimeError:
                         pass
                 self.running = False
+                self.stop_alert_sound()
+
+    def start_alert_sound(self):
+        """Start the alert sound loop in a dedicated thread."""
+        # Stop any existing alert sound
+        self.stop_alert_sound()
+        
+        # Start new alert thread
+        self.sound_stop_event.clear()
+        self.sound_thread = threading.Thread(target=self.play_alert_sound)
+        self.sound_thread.start()
+
+    def stop_alert_sound(self):
+        """Stop the alert sound loop."""
+        self.sound_stop_event.set()
+        if self.sound_thread and self.sound_thread.is_alive():
+            self.sound_thread.join()
+        self.sound_thread = None
+    
+    def play_alert_sound(self):
+        """Continuous alert sound until stopped (Windows beep example)."""
+        while not self.sound_stop_event.is_set():
+            try:
+                # Windows system beep (1000Hz for 500ms)
+                winsound.Beep(1000, 500)
+                # Add interval between beeps
+                time.sleep(0.5)
+            except Exception as e:
+                self.logger.log(LogLevel.ERROR, f"Sound error: {str(e)}")
+                break
 
     def error_occurred(self, message: str, log_message: str):
         """
@@ -64,6 +99,7 @@ class ScriptController:
             self.status_message = f'ERROR: {message}. Reinicie o programa.'
             self.logger.log(LogLevel.ERROR, log_message)
             self.stop_event.set()  # Trigger shutdown
+            self.start_alert_sound()
 
     def main_loop(self):
         """Main processing loop handling system checks, authentication, and order processing."""

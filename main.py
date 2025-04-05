@@ -44,6 +44,9 @@ def update_icon(icon):
         icon.icon = create_image(color)
         time.sleep(1)  # Update interval
 
+def stop_alert(icon):
+    controller.stop_alert_sound()
+
 def setup_icon(icon):
     """Initialize tray icon visibility and start update thread"""
     icon.visible = True
@@ -63,6 +66,7 @@ if __name__ == "__main__":
         menu=pystray.Menu(
             pystray.MenuItem("Mostrar Status", on_status),
             pystray.MenuItem("Reiniciar Impressão", on_restart),
+            pystray.MenuItem("Parar Alerta", stop_alert),
             pystray.MenuItem("Sair", on_exit)
         )
     )
