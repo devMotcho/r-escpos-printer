@@ -33,6 +33,11 @@ class Order(BaseModel):
             return "Recolha no Restaurante"
         return "Entrega ao Domicilio"
     
+    def order_fast_info(self) -> str:
+        if self.customer.full_address.strip() == "":
+            return "VB - " + self.formated_time()
+        return "ED - "+ self.formated_time()
+    
     def formated_date(self) -> str:
         return f"{self.delivery_time.strftime('%d-%m-%Y')}"
     

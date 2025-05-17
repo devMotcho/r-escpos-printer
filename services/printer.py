@@ -77,14 +77,15 @@ def print_order(order_dto : OrderDto, printer : Network, logger : Logger) -> boo
         customer, order = order_dto.manipulate_orderDto()
         # A dictionary with formatted order and customer details.
         data = {
+            "fast_info" : f'{order.order_fast_info()}',
             "title" : f"Pedido n.{str(order.id)} Rodízio Ementa Digital",
 
             "order_type" : f"Tipo do Pedido: {order.order_type()}",
             "delivery_date_time" : f"Data e Hora da Entrega: {order.formated_date()} {order.formated_time()}",
             
             "customer_title" : f"Informações do Cliente",
-            "locality" : f'Localidade de Entrega: {customer.locality_name}',
-            "indication" : f'Ponto de Referência: {customer.indication}',
+            "locality" : f"Localidade de Entrega: {customer.locality_name if customer.locality_name is not None else ''}",
+            "indication" : f"Ponto de Referência: {customer.indication if customer.indication is not None else ''}",
             "nif" : f"NIF: {customer.nif}",
             "full_address" : f"Morada: {customer.full_address}",
             "customer" : f"Cliente: {customer.name}",
@@ -95,12 +96,19 @@ def print_order(order_dto : OrderDto, printer : Network, logger : Logger) -> boo
             "total" : f"TOTAL: {order.total_price} EUR"
         }
 
+        # Fast Order info
+        printer.set(align="center", bold=True, custom_size=True, width=3, height=3)
+        printer.text(wrapper(data["fast_info"]))
+        printer.set(normal_textsize=True)
+
         # Print Order most critical data info
         printer.set(align="center", bold=True)
         printer.text(wrapper(data["title"]))
         printer.set(align="left", bold=False)
         printer.text(wrapper(data["order_type"]))
+        printer.set(align="left", bold=True)
         printer.text(wrapper(data["delivery_date_time"]))
+        printer.set(align="left", bold=False)
         printer.text(wrapper(data["nif"]))
         printer.text(wrapper(data["locality"]))
         printer.text(wrapper(data["full_address"]))
@@ -127,15 +135,17 @@ def print_order(order_dto : OrderDto, printer : Network, logger : Logger) -> boo
             qnt_and_product = f'{instance.quantity}x {instance.product.product_name}'
 
             # Format a line that shows the quantity and price with appropriate spacing.
-            quantity_price_line = calculated_space_between(f'{qnt_and_product} x', instance.price_str())
+            quantity_price_line = calculated_space_between(f'{qnt_and_product}', instance.price_str())
             printer.text(quantity_price_line + '\n')
 
-            if instance.note:
+            if instance.note.strip() != "":
                 printer.text(wrapper(f'Nota do Pedido: {instance.note}'))
                 printer.text("\n")
         
         printer.text("\n")
+        printer.set(align="center", bold=True, custom_size=True, width=2, height=2)
         printer.text(data["total"])
+        printer.set(align="left", bold=False, custom_size=False)
 
         printer.cut()
         return True            

@@ -2,3 +2,13 @@
 Created: 2025-03-23 11:39:34
 ====================================
 
+[ERROR] [2025-04-11 09:59:25] Erro ao conectar com a impressora após 1 tentativas. Device not found (Could not open socket for 192.168.123.100:
+[WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
+[ERROR] [2025-04-11 09:59:48] Erro ao conectar com a impressora após 2 tentativas. Device not found (Could not open socket for 192.168.123.100:
+[WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
+[ERROR] [2025-04-11 10:00:11] Erro ao conectar com a impressora após 3 tentativas. Device not found (Could not open socket for 192.168.123.100:
+[WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond)
+[ERROR] [2025-04-11 10:00:13] Sem conexão à impressora
+[ERROR] [2025-05-17 16:20:28] Erro ao imprimir o pedido nº1 : [WinError 10053] An established connection was aborted by the software in your host machine
+[WARNING] [2025-05-17 16:20:28] Retrying print 1 (attempt 1/3)
+[ERROR] [2025-05-17 16:29:33] Sem conexão à internet.

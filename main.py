@@ -11,7 +11,7 @@ def on_exit(icon, item):
     """Handle application shutdown procedure"""
     controller.stop_script()  # Stop automation script
     icon.stop()  # Remove tray icon
-    sys.exit(0)  # Exit application
+    return
 
 def on_restart(icon, item):
     """Restart the automation script"""
